@@ -11,7 +11,7 @@ module.exports = {
     mode,
     target,
     devtool,
-    entry: path.resolve(__dirname, 'src', 'index.js'),
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
     output: {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
@@ -39,6 +39,18 @@ module.exports = {
                     'sass-loader'
                 ],
             },
+            {
+                test: /\.(?:js|mjs|cjs)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', { targets: "defaults" }]
+                        ]
+                    }
+                }
+            }
         ]
     }
 }
