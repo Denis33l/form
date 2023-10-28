@@ -11,11 +11,16 @@ module.exports = {
     mode,
     target,
     devtool,
+    devServer: {
+        port: 3000,
+        open: true,
+    },
     entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
     output: {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         filename: 'index[contenthash].js',
+        assetModuleFilename: 'assets/[name][ext]',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -38,6 +43,40 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ],
+            },
+            {
+                test: /\.ttf?$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
+            },
+            {
+                test: /\.(jpe?g|png\webp|gif|svg)$/i,
+                use: [
+                    {
+                      loader: 'image-webpack-loader',
+                      options: {
+                        mozjpeg: {
+                          progressive: true,
+                        },
+                        optipng: {
+                          enabled: false,
+                        },
+                        pngquant: {
+                          quality: [0.65, 0.90],
+                          speed: 4
+                        },
+                        gifsicle: {
+                          interlaced: false,
+                        },
+                        webp: {
+                          quality: 75
+                        }
+                      }
+                    },
+                  ],
+                type: 'asset/resource',
             },
             {
                 test: /\.(?:js|mjs|cjs)$/,

@@ -9,28 +9,28 @@
 
 <body>
     <div class="form">
-        <form id="form__body" id="form" action="#">
+        <form class="form__body" id="form" action="#">
             <h1 class="form__title">Form</h1>
             <div class="form__item">
                 <label for="formName" class="form__label">What is your name?<span
                         class="form__label-star">*</span></label>
-                <input id="formName" class="form__input" type="text" placeholder="Enter Name">
+                <input id="formName" class="form__input _req" type="text">
             </div>
             <div class="form__item">
                 <label for="formEmail" class="form__label">Email address<span class="form__label-star">*</span></label>
-                <input id="formEmail" class="form__input" type="email" placeholder="Enter Email Address">
+                <input id="formEmail" class="form__input _req _email" type="email">
             </div>
             <div class="form__item">
                 <label for="formPhone" class="form__label">Phone<span class="form__label-star">*</span></label>
-                <input id="formPhone" class="form__input" type="phone" placeholder="Enter Mobile phone">
+                <input id="formPhone" class="form__input _req" type="phone">
             </div>
             <div class="form__item">
                 <label for="formMessage" class="form__label">Comments<span class="form__label-star">*</span></label>
-                <textarea id="formMessage" class="textarea" name="text" cols="30" rows="5"></textarea>
+                <textarea id="formMessage" class="textarea _req" name="text" cols="30" rows="5"></textarea>
             </div>
             <div class="form__item">
                 <div class="checkbox">
-                    <input id="formAgreement" class="checkbox__input" type="checkbox" id="forPhone" checked>
+                    <input id="formAgreement" class="checkbox__input _req" type="checkbox" id="forPhone" checked>
                     <label for="formAgreement" class="checkbox__label"><span>Я даю свое согласие на обработку
                             персональнх данных в соответствии с <a href="#">Условиями</a>*</span></label>
                 </div>
@@ -38,6 +38,7 @@
             <button type="submit" class="form__btn">Submit</button>
         </form>
     </div>
+    <!-- <script src="./index.js"></script> -->
 </body>
 
 </html>
