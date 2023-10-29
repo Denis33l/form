@@ -7,7 +7,8 @@
     "start": "webpack server",
     "dev": "webpack",
     "prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "clear": "rd /s /q dist",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1"
+    "@babel/polyfill": "^7.12.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   }
 }

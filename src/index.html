@@ -14,19 +14,19 @@
             <div class="form__item">
                 <label for="formName" class="form__label">What is your name?<span
                         class="form__label-star">*</span></label>
-                <input id="formName" class="form__input _req" type="text">
+                <input id="formName" class="form__input _req" name="name" type="text">
             </div>
             <div class="form__item">
                 <label for="formEmail" class="form__label">Email address<span class="form__label-star">*</span></label>
-                <input id="formEmail" class="form__input _req _email" type="email">
+                <input id="formEmail" class="form__input _req _email" name="email" type="email">
             </div>
             <div class="form__item">
                 <label for="formPhone" class="form__label">Phone<span class="form__label-star">*</span></label>
-                <input id="formPhone" class="form__input _req" type="phone">
+                <input id="formPhone" class="form__input _req" name="phone" type="phone">
             </div>
             <div class="form__item">
                 <label for="formMessage" class="form__label">Comments<span class="form__label-star">*</span></label>
-                <textarea id="formMessage" class="textarea _req" name="text" cols="30" rows="5"></textarea>
+                <textarea id="formMessage" class="textarea _req" name="commets" cols="30" rows="5"></textarea>
             </div>
             <div class="form__item">
                 <div class="checkbox">
@@ -38,7 +38,22 @@
             <button type="submit" class="form__btn">Submit</button>
         </form>
     </div>
-    <!-- <script src="./index.js"></script> -->
+    <button id="openPopupButton" class="open-popup-button">Открыть popup</button>
+
+    <div id="popup" class="popup">
+        <div class="popup__background">
+            <div class="popup__body">
+                <div class="popup__content">
+                    <a href="#" class="popup__close">X</a>
+                    <div class="popup__title">Modal Popup</div>
+                    <div class="popup__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, voluptates
+                        quia blanditiis sit ipsam dignissimos, quidem ipsa laudantium tenetur, excepturi reiciendis
+                        possimus quis saepe consequuntur in. Consequatur voluptatem a enim!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
 </body>
 
 </html>
