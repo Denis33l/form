@@ -1,7 +1,4 @@
-.header__contsiner {
-
-}
-
+//Form
 .form * {
     outline: none;
 }
@@ -9,7 +6,7 @@
 .form {
     max-width: 550px;
     margin: 0px auto;
-    color: #fff;
+    color: $white;
     padding: 0 30px;
 
     &__title {
@@ -36,13 +33,13 @@
         width: 100%;
         font-size: 18px;
         color: #bcbbbc;
-        background-color: #242526;
-        border: 2px solid #676767;
+        background-color: $background;
+        border: 2px solid $border;
         transition: all 0.5s ease 0s;
     }
 
     &__input:focus {
-        box-shadow: 0 0 15px #9a05eb;
+        box-shadow: 0 0 15px $primary;
         transition: all 0.5s ease 0s;
     }
 
@@ -51,35 +48,18 @@
         resize: vertical;
         padding: 20px;
         color: #bcbbbc;
-        background-color: #242526;
-        border: 2px solid #676767;
+        background-color: $background;
+        border: 2px solid $border;
         border-radius: 15px;
         width: 100%;
     }
 
     .textarea:focus {
-        box-shadow: 0 0 15px #9a05eb;
+        box-shadow: 0 0 15px $primary;
     }
 
     &__label-star {
-        color: #9a05eb;
-    }
-
-    &__btn {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 60px;
-        background-color: #9a05eb;
-        color: #fff;
-        font-size: 18px;
-        text-transform: uppercase;
-        font-weight: 700;
-        cursor: pointer;
-        border-radius: 20px;
-        box-shadow: 0 5px #18191a;
-        letter-spacing: 2px;
+        color: $primary;
     }
 
     &__btn:hover {
@@ -133,7 +113,7 @@
         align-self: flex-start;
         flex: 0 0 24px;
         height: 24px;
-        background-color: #fff;
+        background-color: $white;
         border-radius: 4px;
         margin-right: 10px;
     }
@@ -146,81 +126,26 @@
         position: absolute;
         top: 4px;
         left: 4px;
-        background-color: #9a05eb;
+        background-color: $primary;
         border-radius: 4px;
         transform: scale(0);
     }
 
     &__label a {
-        color: #9a05eb;
+        color: $primary;
     }
 }
 
-.checkbox__label::before ._error  {
-    box-shadow: 0 0 15px red;
+.checkbox__label::before ._error {
+    box-shadow: 0 0 15px $red;
 }
 
-.form__input._error, .textarea._error {
-    box-shadow: 0 0 15px red;
+.form__input._error,
+.textarea._error {
+    box-shadow: 0 0 15px $red;
 }
 
-
-// .popup {
-//     position: fixed;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(24, 25, 26, 0.9);
-//     top: 0;
-//     left: 0;
-//     opacity: 0;
-//     visibility: hidden;
-//     overflow-y: auto;
-//     overflow-x: hidden;
-//     transition: all 0.8s ease 0s;
-//     &__body {
-//         min-height: 100%;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         padding: 30px 10px;
-//     }
-
-//     &__content {
-//         background-color: #242526;
-//         color: #fff;
-//         max-width: 800px;
-//         padding: 30px;
-//         position: relative;
-//     }
-
-//     &__close {
-//         position: absolute;
-//         right: 10px;
-//         top: 10px;
-//         font-size: 20px;
-//         color: #fff;
-//         text-decoration: none;
-//     }
-
-//     &__title {
-//         font-size: 40px;
-//         margin-bottom: 16px;
-//     }
-
-//     &__text {
-//     }
-// }
-
-// .popup.open {
-//     opacity: 1;
-//     visibility: visible;
-// }
-
-// .popup.open .popup__content {
-//     transform: perspective(600px) translate(0px, 0%) rotate(0deg);
-//     opacity: 1;
-// }
-////////////////////////////////////////////////////////////
+//Popup
 .popup {
     position: fixed;
     top: 0;
@@ -234,27 +159,29 @@
     overflow-y: auto;
     overflow-x: hidden;
     visibility: hidden;
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .popup.active {
     visibility: visible;
-    opacity: 1; 
+    opacity: 1;
+    overflow-y: auto;
 }
 
 .popup__body {
     max-width: 600px;
     padding: 20px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 5px;
     text-align: center;
-    transform: scale(0.8); /* Start with a smaller scale */
-    transition: transform 0.3s ease; /* Add a transition for scale */
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    border-radius: 14px;
 }
 
 .popup.active .popup__body {
-    transform: scale(1); /* When active, set scale to 1 for a zoom effect */
+    transform: scale(1);
 }
 
 .popup__close {
@@ -285,6 +212,38 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-///////////////////////////////////////////////
+.btn {
+    max-width: 490px;
+    margin: 0px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    background-color: $primary;
+    color: $white;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 5px #18191a;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  html > body > .wrapper {
+    height: 100%;
+    position: relative;
+    overflow: auto;
+  }

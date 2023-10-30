@@ -8,19 +8,13 @@ import './index.scss'
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
     form.addEventListener('submit', formSend);
-    
-    // var Data = Object.fromEntries(new FormData(document.querySelector('#form')).entries());
-    // console.log(Data)
 
     async function formSend(e) {
         e.preventDefault();
-        console.log(e);
 
         let error = formValidate(form);
-        // let formData = JSON.stringify(Data);
 
         let formData = JSON.stringify(
-            
             {
                 "name": e.target[0].value,
                 "email": e.target[1].value,
@@ -30,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (error === 0) {
             form.classList.add('_sending');
+            // let Data = Object.fromEntries(new FormData(form).entries());
+            // let formData = JSON.stringify(Data);   The server stopped working, I didn't have time to check this code, but it should work instead of the previously declared FormData variable
+
             let response = await fetch('http://localhost:9090/api/registration', {
                 method: 'POST',
                 body: formData
@@ -61,16 +58,23 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(input);
             formRemoveError(input);
 
+            if (input.classList.contains('_phone')) {
+                if (phoneTest(input)) {
+                    formAddError(input);
+                    error++;
+                }
+            }
+            if (input.getAttribute("type") === "checkbox" && !input.checked) {
+                formAddError(input);
+                error++;
+            }
             if (input.classList.contains('_email')) {
                 if (emailTest(input)) {
                     formAddError(input);
                     error++;
                 }
             }
-            else if (input.getAttribute("type") === "checkbox" && !input.checked) {
-                formAddError(input);
-                error++;
-            } else {
+            else {
                 if (input.value === '') {
                     formAddError(input);
                     error++;
@@ -88,10 +92,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function emailTest(input) {
         return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
     }
+    function phoneTest(input) {
+        return /^\+375\s?\(?(17|25|29|33|44)\)?\s?\d{3}-\d{2}-\d{2}$/.test(input.value);
+    }
 });
 
 
-
+//Popup
 document.addEventListener('DOMContentLoaded', function () {
     const popup = document.getElementById('popup');
     const popupClose = popup.querySelector('.popup__close');
@@ -100,10 +107,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function openPopup() {
         popup.classList.add('active');
+        document.body.classList.add('popup-open');
     }
 
     function closePopup() {
         popup.classList.remove('active');
+        document.body.classList.remove('popup-open');
     }
 
     function closePopupOnBackgroundClick(event) {
